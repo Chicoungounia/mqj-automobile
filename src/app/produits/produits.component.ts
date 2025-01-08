@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
+import { HttpProduitsService } from './http-produits.service';
 
 @Component({
   selector: 'app-produits',
@@ -7,6 +8,26 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './produits.component.html',
   styleUrl: './produits.component.css'
 })
-export class ProduitsComponent {
+export class ProduitsComponent implements OnInit {
+  
+  produits: any[] = []; 
+  
+  constructor(private produitsService: HttpProduitsService) { }
 
+  ngOnInit(): void {
+
+    let authBody = {"username": "admin", "password": "pwd"}
+
+    this.produitsService.login(authBody).subscribe((value) => {
+      console.log(value);
+      localStorage.setItem('token', value.token);
+    
+    this.produitsService.getProducts().subscribe(value => {
+        console.log(value); 
+      },
+    
+    );
+  });
+  }
 }
+
