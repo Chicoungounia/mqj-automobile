@@ -18,6 +18,14 @@
 
 <div class="container">
   <h2>Liste des Clients</h2>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      placeholder="Rechercher par nom de client" 
+      [(ngModel)]="searchQuery" 
+      (input)="filterClients()" 
+    />
+  </div>
 
   <!-- Affichage des erreurs -->
   <div *ngIf="errorMessage" class="error">
@@ -26,7 +34,7 @@
 
   <!-- Affichage des clients dans des conteneurs individuels -->
   <div class="clients-container">
-    <div *ngFor="let client of clients" class="client-card">
+    <div *ngFor="let client of filteredClients" class="client-card">
       <h3>{{ client.name }}</h3>
       
       <div class="client-details">
@@ -55,7 +63,7 @@
   
 
   <!-- Affichage du message lorsqu'il n'y a pas de clients -->
-  <div *ngIf="clients.length == 0">
+  <div *ngIf="filteredClients.length === 0">
     <p>Aucun client trouvé.</p>
   </div>
 </div>

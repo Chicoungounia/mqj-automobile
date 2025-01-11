@@ -1,3 +1,4 @@
+
 header {
     display: flex;
     justify-content: space-between;
@@ -78,7 +79,6 @@ header {
 /* ------------------------- tableau clients----------------------------------------------- */
 
 .container {
-   
    background-color: black;
     margin-top: -42px;
   }
@@ -88,14 +88,50 @@ header {
     font-size: 50px;
     font-style: italic;
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 15px;
+  
+  
   }
 
   .error {
     color: red;
     font-weight: bold;
   }
+
+/* Champ de recherche */
+.container input {
+  margin-bottom: 50px;
+  margin-top: -10px;
+  margin-left: 550px;
+  width: 25%; /* Largeur du champ */
+  padding: 10px;
+  font-size: 25px; /* Taille de police */
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px -0px 25px 3px #2175fd;
+  color: black; /* Texte bleu */
+  background-color: rgba(214, 165, 83); /* Fond blanc */
+  border: 2px solid black; /* Bordure noire */
+  border-radius: 10px;
+  box-shadow: 0px -0px 25px 3px #2175fd;
+}
+
+/* Style du placeholder */
+.container input::placeholder {
+  color: #000005; /* Texte bleu */
+  opacity: 0.5; /* Transparence */
+}
+
+.container input:focus {
+  outline: none;
+ 
+  
+ 
+ 
+}
+
+
+
+
   
   .clients-container {
     
@@ -120,7 +156,7 @@ header {
     height: 250px; /* Définir la hauteur de la carte */
     border: 2px solid black;
     box-shadow: 0px -0px 25px 3px #2175fd;
-    background-color: rgba(214, 165, 83, 0.8);
+    background-color: rgba(214, 165, 83);
     border-radius: 30px;  
   }
   
@@ -138,7 +174,7 @@ header {
     font-size: 1.2rem;
     font-weight: bold;
     color: black;
-    background-color: rgba(214, 165, 83, 0.8);
+    background-color: rgba(214, 165, 83);
     border: none;
     border-radius: 5px;
     padding: 5px;
