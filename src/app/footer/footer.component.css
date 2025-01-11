@@ -4,11 +4,11 @@ footer {
     align-items: center;
     padding: 5px 60px;
     background-color: #000000;
-    color: orange;
+    color: #2175fd;
 }
 
 .footer-links a {
-    color: rgb(140, 3, 231);
+    color: #2175fd;
     text-decoration: none;
     font-size: 18px;
 }

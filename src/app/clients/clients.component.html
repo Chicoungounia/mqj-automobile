@@ -11,12 +11,54 @@
       </ul>
     </nav>
     
-    <div class="connexion">
-      <button>Connexion</button>
+    <div class="newClient">
+      <a href="/nouveau-client">Nouveau Client</a>
     </div>
 </header>
 
-<div class="image-container">
-    <img src="cars.jpg" alt="Cars" class="responsive-image">
+<div class="container">
+  <h2>Liste des Clients</h2>
+
+  <!-- Affichage des erreurs -->
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Affichage des clients dans des conteneurs individuels -->
+  <div class="clients-container">
+    <div *ngFor="let client of clients" class="client-card">
+      <h3>{{ client.name }}</h3>
+      
+      <div class="client-details">
+        <div class="client-info">
+          <p><strong>Id :</strong></p>
+          <p><strong>Email :</strong></p>
+          <p><strong>Téléphone :</strong></p>
+          <p><strong>Adresse :</strong></p>
+          
+        </div>
+  
+        <div class="client-values">
+          <p>{{ client.id }}</p>
+          <p>{{ client.email }}</p>
+          <p>{{ client.phone }}</p>
+          <p>{{ client.address }}</p>
+        </div>
+      </div>
+
+      <div class="icone">
+        <i class="fa-solid fa-pen-to-square" style="color: #2175fd;" (click)="navigateToEdit(client.id)"></i>
+        <i class="fa-regular fa-trash-can" style="color: #2175fd;"></i>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Affichage du message lorsqu'il n'y a pas de clients -->
+  <div *ngIf="clients.length == 0">
+    <p>Aucun client trouvé.</p>
+  </div>
 </div>
+
+
 <app-footer></app-footer>

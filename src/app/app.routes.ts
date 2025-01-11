@@ -6,6 +6,9 @@ import { CommandesComponent } from './commandes/commandes.component';
 import { ClientsComponent } from './clients/clients.component';
 import { InscriptionComponent } from './identification/inscription/inscription.component';
 import { ConnectionComponent } from './identification/connection/connection.component';
+import { FormulaireClientComponent } from './formulaires/formulaire-client/formulaire-client.component';
+import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+import { ModificationClientComponent } from './formulaires/formulaire-client/modification-client/modification-client.component';
 
 export const routes: Routes = [
 
@@ -61,6 +64,27 @@ export const routes: Routes = [
         pathMatch: 'full'
 
     },
+    {
+        path: "nouveau-client",
+        component: FormulaireClientComponent,
+        pathMatch: 'full'
+
+    },
+    {
+        path: "modification-client/:id",
+        component: ModificationClientComponent,
+        pathMatch: 'full'
+
+    },
+    {
+        path: "condition-utilisation",
+        component: ConditionUtilisationComponent,
+        pathMatch: 'full'
+
+    },
+
+ 
+
 
 
 

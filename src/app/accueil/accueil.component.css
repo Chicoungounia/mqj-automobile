@@ -76,14 +76,20 @@ header {
 }
 
 
-
-
-/* Le conteneur qui va tenir l'image */
-.image-container {
-    width: 100%;   /* occupe toute la largeur de l'écran */
-    overflow: hidden;  /* cache toute partie de l'image qui dépasse */
+.font {
+    background-image: url('/cars.jpg');
+    background-size: cover; /* Cette propriété permet à l'image de couvrir tout l'élément */
+    background-position: center top; /* L'image est centrée horizontalement et alignée vers le haut */
+    background-repeat: no-repeat; /* Empêche l'image de se répéter */
+    height: 100vh; /* Si vous voulez que l'image couvre toute la hauteur de la fenêtre */
+    display: flex;
+    padding-top: 20px;
+    color: lightyellow;
+    justify-content: center; /* Permet de centrer le contenu à l'intérieur du conteneur */
+    
 
 }
+
 
 /* L'image qui doit se redimensionner proportionnellement */
 .responsive-image {
@@ -103,6 +109,43 @@ header {
         width: 100%;
         height: auto;
     }
+}
+
+
+/* ------------------texte------------------------------- */ 
+
+h1 {
+    text-align: center;
+   
+    
+}
+
+h1 strong {
+    font-size: 50px;
+    
+}
+
+p {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 1.2em;
+    background: #000000;
+    
+}
+
+h2 {
+    padding-left: 50px;
+}
+
+li {
+    padding-left: 15px;
+}
+
+.container ul {
+    padding-left: 100px;
+    margin-top: 20px;
+    font-size: 1.2em;
+    
 }
 
 app-footer {
