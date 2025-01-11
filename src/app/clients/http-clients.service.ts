@@ -49,6 +49,15 @@ export class HttpClientsService {
       return this.httpClients.get<any>(`http://localhost:3000/api/customers/${id}`);
     }
   
+    deleteClient(clientId: string): Observable<any> {
+      const token = localStorage.getItem('token') || '';
+      const headers = { Authorization: token };
+    
+      return this.httpClients.delete<any>(
+        `http://localhost:3000/api/customers/${clientId}`, 
+        { headers }
+      );
+    }
   
   }
 

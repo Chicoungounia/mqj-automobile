@@ -20,8 +20,7 @@ export class ModificationClientComponent implements OnInit {
   };
 
   clientId: string = '';
-  
-  
+
 
   constructor(
     private route: ActivatedRoute,
