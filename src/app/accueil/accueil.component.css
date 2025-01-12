@@ -113,6 +113,11 @@ header {
 
 
 /* ------------------texte------------------------------- */ 
+.text-container {
+    display: inline-block; /* Ajuste la largeur à celle du contenu */
+    background: rgba(0, 0, 0, 0.5); 
+   
+  }
 
 h1 {
     text-align: center;
@@ -126,26 +131,51 @@ h1 strong {
 }
 
 p {
-    margin-left: 50px;
-    margin-right: 50px;
-    font-size: 1.2em;
-    background: #000000;
+    display: inline-block;
+    padding: 3px 17px;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-size: 1.3em;
+    background: rgba(0, 0, 0, 0.7);
     
 }
 
-h2 {
-    padding-left: 50px;
+ h2 {
+    display: inline-block; /* Adapte la largeur à celle du texte */
+    font-size: 1.6em;
+    padding: 3px 10px; /* Ajoute un espace intérieur autour du texte */
+    margin-left: 150px;
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    color: white; /* Texte blanc pour le contraste */
+    border-radius: 5px; /* Coins arrondis pour un style agréable */
+    text-align: left; /* Alignement à gauche par défaut */
+
 }
 
 li {
-    padding-left: 15px;
+    margin-left: 5px;
+    padding-left: 25px;
+    
 }
 
+
+
+
+
 .container ul {
-    padding-left: 100px;
-    margin-top: 20px;
-    font-size: 1.2em;
+    padding: 3px 10px;
+    padding-left: 25px;
+    margin-left: 190px;
+    margin-right: 150px;
+    font-size: 1.3em;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.7);
+    line-height: 1.0;
     
+}
+
+li strong {
+    font-style: normal;
 }
 
 app-footer {

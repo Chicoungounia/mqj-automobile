@@ -393,6 +393,10 @@ export class ClientsComponent implements OnInit {
     this.clientService.deleteClient(clientId).subscribe({
       next: () => {
         this.clients = this.clients.filter((client) => client.id !== clientId);
+         this.clients = this.clients.map((client, index) => ({
+          ...client,
+          id: index + 1, // Recalcule l'ID en fonction de la position
+        }));
         this.filteredClients = [...this.clients]; // Mise à jour de la liste filtrée
         alert('Client supprimé avec succès.');
       },
@@ -402,13 +406,15 @@ export class ClientsComponent implements OnInit {
     });
   }
 
+  
+
   /**
    * Sauvegarde les modifications apportées à un client.
    */
   modifClient(client: any): void {
     this.clientService.modifClient(client.id, client).subscribe({
       next: (updatedClient) => {
-        const index = this.clients.findIndex((c) => c.id === client.id);
+        const index = this.clients.findIndex((c) => c.id == client.id);
         if (index !== -1) {
           this.clients[index] = updatedClient;
           this.filteredClients = [...this.clients];
