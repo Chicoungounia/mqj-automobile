@@ -14,23 +14,35 @@
     </div>
     
   </header>
-
-<div id="identification">
+  
+  <div id="identification">
     <div id="photo">
-    <img src="cars.jpg"/>
+      <img src="cars.jpg" />
     </div>
     <div id="utilisateur">
-        <h2>Identification</h2>
-        <div id="'logo">
-            <img src ="mqj.png" width="25%"/>
-        </div>
-         <div class="speudo">
-            <input placeholder="Nom d'utilisateur"/>
-            <input placeholder="Mot de passe"/>
-            <div class="validez">
-            <button>Validez</button>
-        </div>
-         </div>
+      <h2>Identification</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="speudo">
+      <input 
+        type="text" 
+        placeholder="Nom d'utilisateur" 
+        [(ngModel)]="authData.username" 
+        name="username" 
+        required 
+      />
+      <input 
+        type="password" 
+        placeholder="Mot de passe" 
+        [(ngModel)]="authData.password" 
+        name="password" 
+        required 
+      />
+    </div>
+    <div class="validez">
+      <button type="submit">Validez</button>
+    </div>
+  </form>
+
         <div class="newUtilisateur">
             <a href="inscription">Nouveau membre</a>
     </div>

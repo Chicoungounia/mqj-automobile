@@ -28,11 +28,11 @@ header {
     text-decoration: underline;
 }
 
-.connexion a {
-    text-decoration: none;
+.connexion-status button {
+    
     padding: 8px 16px;
-    background-color: orange;
-    font-size: 20px;
+    background-color: green;
+    font-size: 18px;
     font-weight: bold;
     color: rgb(0, 0, 0);
     border: none;
@@ -40,8 +40,8 @@ header {
     cursor: pointer;
 }
 
-.connexion a:hover {
-    background-color: #009e2f;
+.connexion-status :hover {
+    background-color: red;
     color: white;
 }
 
@@ -68,7 +68,7 @@ header {
         font-size: 20px;
     }
 
-    .connexion button {
+    .connexion-status button {
         padding: 10px 20px;
         font-size: medium;
        

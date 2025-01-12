@@ -20,7 +20,7 @@ export class HttpLoginService {
       }
 
       const headers = {Authorization : token};
-      return this.httpClient.get<any>('http://localhost:3000/api/users',{headers})
+      return this.httpClient.get<any>('http://localhost:3000/api/users/',{headers})
 
     }
 

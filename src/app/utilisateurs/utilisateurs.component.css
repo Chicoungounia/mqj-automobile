@@ -1,3 +1,4 @@
+
 header {
     display: flex;
     justify-content: space-between;
@@ -15,11 +16,10 @@ header {
     list-style: none;
     display: flex;
     gap: 80px;
-    margin-left: -50px;
 }
 
 .nav a {
-    color: rgb(140, 3, 231);
+    color: #D6A553;
     text-decoration: none;
     font-size: 30px;
 }
@@ -28,20 +28,23 @@ header {
     text-decoration: underline;
 }
 
-.connexion button {
+.newClient a {
+  text-decoration: none;
     padding: 8px 16px;
-    background-color: orange;
-    font-size: 18px;
+    background-color: black;
+    font-size: 20px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-    border: none;
+    color: #D6A553;
+    border: 3px solid #D6A553;
+    
     border-radius: 25px;
     cursor: pointer;
 }
 
-.connexion button:hover {
-    background-color: #009e2f;
-    color: white;
+.newClient a:hover {
+    background-color: green;
+    color:#D6A553 ;
+    border: 3px solid #D6A553;
 }
 
 /* Responsive Design - Small Screens */
@@ -73,41 +76,225 @@ header {
        
     }
 }
+/* ------------------------- tableau utilisateur----------------------------------------------- */
 
+.container {
+   background-color: black;
+    margin-top: -42px;
+    background: linear-gradient(to bottom, #000000 0%, #4d4c4c 50%, #000000 100%);    
+  }
 
+   h2 {
+    color: #D6A553;
+    font-size: 50px;
+    font-style: italic;
+    text-align: center;
+  
+  
+  }
 
+  .error {
+    color: red;
+    font-weight: bold;
+  }
 
-
-/* styles.css */
-
-/* Le conteneur qui va tenir l'image */
-.image-container {
-    width: 100%;   /* occupe toute la largeur de l'écran */
-    overflow: hidden;  /* cache toute partie de l'image qui dépasse */
-
+/* Champ de recherche */
+.container input {
+  margin-bottom: 50px;
+  margin-top: -10px;
+  margin-left: 550px;
+  width: 25%; /* Largeur du champ */
+  padding: 10px;
+  font-size: 25px; /* Taille de police */
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px -0px 25px 3px #2175fd;
+  color: black; /* Texte bleu */
+  background-color: rgba(214, 165, 83); /* Fond blanc */
+  border: 2px solid black; /* Bordure noire */
+  border-radius: 10px;
+  box-shadow: 0px -0px 25px 3px #2175fd;
 }
 
-/* L'image qui doit se redimensionner proportionnellement */
-.responsive-image {
-    width: 100%;       /* L'image occupe toute la largeur du conteneur */
-    height: auto;      /* La hauteur est ajustée automatiquement pour maintenir les proportions */
-    object-fit: cover; /* Si l'image ne garde pas ses proportions ou déborde, cela la recadre */
-    max-height: 90vh;   /* Limite la hauteur de l'image à 60% de la hauteur de la fenêtre */
+/* Style du placeholder */
+.container input::placeholder {
+  color: #000005; /* Texte bleu */
+  opacity: 0.5; /* Transparence */
 }
 
-/* Responsive Design pour garantir la largeur entière sur tous les écrans */
-@media (max-width: 768px) {
-    .image-container {
-        width: 100%;
+.container input:focus {
+  outline: none;
+ 
+  
+ 
+ 
+}
+
+
+
+
+  
+  .clients-container {
+    
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+    justify-items: center;
+    padding-bottom: 50px;
+  } 
+
+  .clients-container input {
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-items: center;
+    padding-bottom: 50px;
+  } 
+  
+  .client-card {
+    width: 1000px; /* Définir la largeur de la carte */
+    height: 200px; /* Définir la hauteur de la carte */
+    border: 2px solid black;
+    box-shadow: 0px -0px 25px 3px #2175fd;
+    background-color: rgba(214, 165, 83);
+    border-radius: 30px;  
+  }
+  
+
+  .client-card h3 {
+    color: #2175fd;
+    font-size: 2.0rem;
+    text-align: center;
+    margin: 20px 0px;
+    padding-bottom: 10px;
+  }
+
+  .client-card input {
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    background-color: rgba(214, 165, 83);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+  }
+
+  .client-card input:focus {
+    outline: 2px solid #2175fd;
+  }
+
+  .btn-validate {
+    background-color: #2175fd;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-validate:hover {
+    background-color: #1b5dbf;
+  }
+  
+  .client-details {
+    display: flex;
+    padding: 10px;
+    margin-top: -35px;
+    text-align: end;
+  }
+  
+  .client-info,
+  .client-values {
+    display: flex;
+    flex-direction: column; /* Disposer les informations verticalement */
+    
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .client-info p,
+  .client-values p {
+    margin: 3px 0px;
+  }
+  
+  .client-info strong {
+    font-weight: bold;
+    color: black;
+    margin-left: 20px;
+    
+  }
+  
+  .client-values  {
+    font-weight: bold;
+    color: black;
+    margin-left: 10px; 
+    text-align: start;
+  }
+
+  .icone {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: -10px;
+    
+    
+  }
+  
+  .icone i {
+    cursor: pointer;
+    font-size: 30px;
+    transition: transform 0.2s ease-in-out;
+    
+   
+  }
+
+  /* Texte affiché au survol de l'icône "Modifier" */
+.icone i.fa-pen-to-square:hover::after {
+  content: "Modifier"; 
+  padding: 0px 10px;
+  font-size: 18px;
+  
+}
+
+.icone i.fa-trash-can:hover::after {
+  content: "Supprimer"; 
+  padding: 0px 10px;
+  font-size: 18px;
+  
+}
+  
+  .icone i:hover {
+    
+    animation: shake 0.2s;
     }
 
-    .responsive-image {
-        width: 100%;
-        height: auto;
-    }
+  /* Définition de l'animation shake */
+@keyframes shake {
+  10% { transform: translateX(-3px); }
+  20% { transform: translateX(6px); }
+  30% { transform: translateX(-3px); }
+  40% { transform: translateX(6px); }
+  50% { transform: translateX(-3px); }
+  60% { transform: translateX(6px); }
+  70% { transform: translateX(-3px); }
+  80% { transform: translateX(6px); }
+  90% { transform: translateX(-3px); }
+  100% { transform: translateX(6px); }
 }
+
+
+  
+
+  
+
 
 app-footer {
     position: relative;
-    top: -4px;  /* Déplace le footer de 20px vers le haut */
+    top: -4px; 
 }

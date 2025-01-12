@@ -12,9 +12,13 @@
       </ul>
     </nav>
     
-    <div class="connexion">
-      <a href="/connection">Connection</a>
+    <div class="connexion-status">
+      <button (click)="handleAuthAction()">
+        {{ isLoggedIn ? 'Se déconnecter' : 'Connectez-vous' }}
+      </button>
     </div>
+    
+    
 </header>
 
 

@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpUtilisateursService {
 
+  // Récupération des données users dans API httpClient
    constructor(private httpUtilisateurs: HttpClient) { }
       login(body: any) {  
         return this.httpUtilisateurs.post<any>('http://localhost:3000/api/auth/login', body);
@@ -22,4 +24,8 @@ export class HttpUtilisateursService {
         return this.httpUtilisateurs.get<any>('http://localhost:3000/api/users',{headers})
   
       }
+ 
+    
+
+
 }

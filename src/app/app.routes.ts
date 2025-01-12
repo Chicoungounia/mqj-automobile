@@ -9,83 +9,20 @@ import { ConnectionComponent } from './identification/connection/connection.comp
 import { FormulaireClientComponent } from './formulaires/formulaire-client/formulaire-client.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
 import { ModificationClientComponent } from './formulaires/formulaire-client/modification-client/modification-client.component';
+import { AuthGuard } from './identification/auth.guard';
 
 export const routes: Routes = [
+{ path: "", component: AccueilComponent, pathMatch: 'full' },
+  { path: "accueil", component: AccueilComponent, pathMatch: 'full' },
+  { path: "connection", component: ConnectionComponent, pathMatch: 'full' },
+  { path: "inscription", component: InscriptionComponent, pathMatch: 'full' },
 
-    {
-        path: "",
-        component: AccueilComponent,
-        pathMatch: 'full'
-
-    },
-
-    {
-        path: "accueil",
-        component: AccueilComponent,
-        pathMatch: 'full'
-
-    },
-
-    {
-        path: "connection",
-        component: ConnectionComponent,
-        pathMatch: 'full'
-
-    },
-
-    {
-        path: "inscription",
-        component: InscriptionComponent,
-        pathMatch: 'full'
-
-    },
-
-    {
-        path: "utilisateurs",
-        component: UtilisateursComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "produits",
-        component: ProduitsComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "commandes",
-        component: CommandesComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "clients",
-        component: ClientsComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "nouveau-client",
-        component: FormulaireClientComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "modification-client/:id",
-        component: ModificationClientComponent,
-        pathMatch: 'full'
-
-    },
-    {
-        path: "condition-utilisation",
-        component: ConditionUtilisationComponent,
-        pathMatch: 'full'
-
-    },
-
- 
-
-
-
-
+  // Routes protégées par AuthGuard
+  { path: "utilisateurs", component: UtilisateursComponent, canActivate: [AuthGuard] },
+  { path: "produits", component: ProduitsComponent, canActivate: [AuthGuard] },
+  { path: "commandes", component: CommandesComponent, canActivate: [AuthGuard] },
+  { path: "clients", component: ClientsComponent, canActivate: [AuthGuard] },
+  { path: "nouveau-client", component: FormulaireClientComponent, canActivate: [AuthGuard] },
+  { path: "modification-client/:id", component: ModificationClientComponent, canActivate: [AuthGuard] },
+  { path: "condition-utilisation", component: ConditionUtilisationComponent }
 ];

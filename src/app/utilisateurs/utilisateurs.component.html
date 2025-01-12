@@ -1,23 +1,70 @@
 <header>
-    <div class="logo">
-        <a href="/accueil" alt="Logo"><img src="mqj.png"></a>
-    </div>
-    
-    <nav class="nav">
-      <ul>
-        <li><a href="/produits">Produits</a></li>
-        <li><a href="/commandes">Commandes</a></li>
-        <li><a href="/clients">Clients</a></li>
-      </ul>
-    </nav>
-    
-    <div class="connexion">
-      <button>Connexion</button>
-    </div>
+  <div class="logo">
+    <a href="/accueil" alt="Logo"><img src="mqj.png"></a>
+  </div>
+  
+  <nav class="nav">
+    <ul>
+      <li><a href="/produits">Produits</a></li>
+      <li><a href="/commandes">Commandes</a></li>
+      <li><a href="/clients">Clients</a></li>
+    </ul>
+  </nav>
+  
+  <div class="newClient">
+    <a href="/nouveau-utilisateur">Ajouter Utilisateur</a>
+  </div>
 </header>
 
-<div class="image-container">
-    <img src="cars.jpg" alt="Cars" class="responsive-image">
-</div>
-<app-footer></app-footer>
+<div class="container">
+<h2>Liste des Utilisateurs</h2>
+<!-- <div class="search-bar">
+  <input 
+    type="text" 
+    placeholder="Rechercher par nom de client" 
+    [(ngModel)]="searchQuery" 
+    (input)="filterClients()" 
+  /> 
+</div>-->
 
+ <!-- Affichage des erreurs -->
+<div *ngIf="errorMessage" class="error">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<!-- Affichage des clients dans des conteneurs individuels -->
+<div class="clients-container">
+  <div *ngFor="let utilisateur of user" class="client-card">
+    <h3>{{ utilisateur.username }}</h3>
+    
+    <div class="client-details">
+      <div class="client-info">
+        <p><strong>Id :</strong></p>
+        <p><strong>rôle :</strong></p>
+        <p><strong>Mot de passe :</strong></p>
+        
+      </div>
+
+      <div class="client-values">
+        <p>{{ utilisateur.id }}</p>
+        <p>{{ utilisateur.role }}</p>
+        <p>{{ utilisateur.password }}</p>
+      </div>
+    </div>
+
+    <!-- <div class="icone">
+      <i class="fa-solid fa-pen-to-square" style="color: #2175fd" (click)="navigateToEdit(client.id)"></i>
+      <i class="fa-regular fa-trash-can" style="color: #2175fd" (click)="confirmDelete(client.id)"></i>
+    </div>
+  </div>
+</div>
+
+
+<!-- Affichage du message lorsqu'il n'y a pas de clients -->
+<!-- <div *ngIf="filteredClients.length === 0"> -->
+  <!-- <p>Aucun client trouvé.</p> -->
+</div>
+</div>
+
+
+<app-footer></app-footer>
