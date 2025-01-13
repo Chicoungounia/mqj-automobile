@@ -1,3 +1,4 @@
+import { FormulaireUserComponent } from './formulaires/formulaire-user/formulaire-user.component';
 import { Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
@@ -15,10 +16,11 @@ export const routes: Routes = [
 { path: "", component: AccueilComponent, pathMatch: 'full' },
   { path: "accueil", component: AccueilComponent, pathMatch: 'full' },
   { path: "connection", component: ConnectionComponent, pathMatch: 'full' },
-  { path: "inscription", component: InscriptionComponent, pathMatch: 'full' },
+  { path: "inscription", component: InscriptionComponent, canActivate: [AuthGuard] },
 
   // Routes protégées par AuthGuard
   { path: "utilisateurs", component: UtilisateursComponent, canActivate: [AuthGuard] },
+    {path: "nouvel-utilisateur", component: FormulaireUserComponent, canActivate: [AuthGuard]},
   { path: "produits", component: ProduitsComponent, canActivate: [AuthGuard] },
   { path: "commandes", component: CommandesComponent, canActivate: [AuthGuard] },
   { path: "clients", component: ClientsComponent, canActivate: [AuthGuard] },

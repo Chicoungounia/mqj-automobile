@@ -103,15 +103,15 @@ header {
   margin-bottom: 50px;
   margin-top: -10px;
   margin-left: 550px;
-  width: 25%; /* Largeur du champ */
+  width: 25%; 
   padding: 10px;
-  font-size: 25px; /* Taille de police */
+  font-size: 25px; 
   font-weight: bold;
   text-align: center;
   box-shadow: 0px -0px 25px 3px #2175fd;
   color: black; /* Texte bleu */
-  background-color: rgba(214, 165, 83); /* Fond blanc */
-  border: 2px solid black; /* Bordure noire */
+  background-color: rgba(214, 165, 83); 
+  border: 2px solid black; 
   border-radius: 10px;
   box-shadow: 0px -0px 25px 3px #2175fd;
 }
@@ -168,7 +168,10 @@ header {
     text-align: center;
     margin: 20px 0px;
     padding-bottom: 10px;
+    
   }
+
+ 
 
   .client-card input {
     width: 100%;
@@ -286,7 +289,11 @@ header {
   80% { transform: translateX(6px); }
   90% { transform: translateX(-3px); }
   100% { transform: translateX(6px); }
+
+  
 }
+
+
 
 
   

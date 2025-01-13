@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -24,6 +25,15 @@ export class HttpUtilisateursService {
         return this.httpUtilisateurs.get<any>('http://localhost:3000/api/users',{headers})
   
       }
+
+       // Méthode pour ajouter un client dans le forulaire-client
+          addUser(utilisateur: any): Observable<any> {
+            const token = localStorage.getItem('token')||'';
+      
+              const headers = { Authorization: token };
+           
+            return this.httpUtilisateurs.post<any>('http://localhost:3000/api/users', utilisateur, { headers });
+          }
  
     
 
