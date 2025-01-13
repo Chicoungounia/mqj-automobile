@@ -31,18 +31,18 @@ header {
 .connexion-status button {
     
     padding: 8px 16px;
-    background-color: green;
+    background-color: black;
     font-size: 18px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-    border: none;
+    color: #D6A553;
+    border: 3px solid #D6A553;
     border-radius: 25px;
     cursor: pointer;
 }
 
 .connexion-status :hover {
-    background-color: red;
-    color: white;
+    background-color: green;
+    color: black;
 }
 
 /* Responsive Design - Small Screens */
