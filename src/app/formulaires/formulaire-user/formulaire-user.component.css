@@ -1,49 +1,160 @@
-.app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #2175fd;
-    color: white;
-  }
+/* Style pour le conteneur du formulaire */
+.background {
+  background-image: url('/amg.webp'); /* Définir le chemin de l'image */
+  background-size: cover; /* L'image couvrira tout l'espace disponible */
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
   
-  .form-group {
-    margin-bottom: 15px;
-  }
+ 
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 60px;
+  background-color: #000000;
+}
+
+.logo img {
+  height: 100px;
+  cursor: pointer;
+}
+
+.nav ul {
+  display: flex;
+  gap: 80px;
+}
+
+.nav a {
+  color: #2175fd;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.connect a {
+
+  padding: 8px 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: greenyellow;
+}
+
+
+
+/* 
+------------------formulaire--------------------------- */
+
+.container {
+  width: 500px;
+  height: 400px;
+margin-top: 55px;
+ 
+  padding: 20px;
+  background-color: #D6A553;
+  border-radius: 30px;
+  box-shadow: 0px -0px 25px 3px #2175fd;
+  border: 4px solid black;
+  text-align: center;
+  display: block;
+  justify-items: center;
+  align-items: center;
+
   
-  label {
-    font-weight: bold;
-  }
+ 
+}
+
+/* Titre du formulaire */
+h2 {
+  text-align: center;
+  color: #2175fd;
+  font-size: 2.5rem;
+  margin-top: -5px;
   
-  input, select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
   
-  button {
-    padding: 10px 15px;
-    background-color: #2175fd;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
   
-  button:hover {
-    background-color: #0056b3;
-  }
   
-  .success-message {
-    color: green;
-    font-weight: bold;
-  }
+}
+
+/* Style des champs du formulaire */
+.form-group {
+
+  position: relative;
+  top: -20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  width: 50vh;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+/* Style des champs de texte */
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  border: 2px solid rgb(5, 0, 5);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: black;
+  margin-top: -10px;
   
-  .error-message {
-    color: red;
-    font-weight: bold;
-  }
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
   
+  border-color: #2175fd;
+}
+
+select {
+  width: 103%;
+  padding: 7px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+/* Style du bouton de soumission */
+button[type="submit"] {
+  width: 50%;
+  padding: 12px;
+  background-color: #4A90E2;
+  border: 2px solid black;
+  color: white;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  
+}
+
+button[type="submit"]:hover {
+  background-color:green;
+  color: black;
+}
+
+button[type="submit"] {
+  background-color: #2175fd;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+
+.error {
+  color: red;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 5px;
+  display: block;
+}
+

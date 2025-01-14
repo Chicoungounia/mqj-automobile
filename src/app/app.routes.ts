@@ -5,7 +5,6 @@ import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { ClientsComponent } from './clients/clients.component';
-import { InscriptionComponent } from './identification/inscription/inscription.component';
 import { ConnectionComponent } from './identification/connection/connection.component';
 import { FormulaireClientComponent } from './formulaires/formulaire-client/formulaire-client.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
@@ -16,7 +15,6 @@ export const routes: Routes = [
 { path: "", component: AccueilComponent, pathMatch: 'full' },
   { path: "accueil", component: AccueilComponent, pathMatch: 'full' },
   { path: "connection", component: ConnectionComponent, pathMatch: 'full' },
-  { path: "inscription", component: InscriptionComponent, canActivate: [AuthGuard] },
 
   // Routes protégées par AuthGuard
   { path: "utilisateurs", component: UtilisateursComponent, canActivate: [AuthGuard] },

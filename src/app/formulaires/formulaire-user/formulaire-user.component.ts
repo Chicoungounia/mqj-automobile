@@ -18,8 +18,8 @@ export class FormulaireUserComponent {
     role: '',
     password: ''
   };
-  successMessage = '';
-  errorMessage = '';
+ 
+  error = '';
 
   constructor(private httpUser: HttpUtilisateursService, private router: Router) {}
 
@@ -27,7 +27,7 @@ export class FormulaireUserComponent {
     this.httpUser.addUser(this.newUser).subscribe({
       next: (response) => {
         console.log('Client ajouté:', response);
-        alert(`Le client "${response.name}" a été ajouté avec succès !`);
+        alert(`L'utilisateur "${response.username}" a été ajouté avec succès !`);
         this.newUser = response
         this.router.navigate(['/utilisateurs']); // Redirige vers la page des clients après l'ajout
       },

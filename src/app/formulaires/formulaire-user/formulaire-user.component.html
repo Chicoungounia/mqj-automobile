@@ -21,26 +21,65 @@
   
   <div class="background"> 
     <div class="container">
-        <h2>Nouveau User</h2>
+        <h2>Nouvel Utilisateur</h2>
       
-        <!-- Formulaire d'ajout d'un nouveau client -->
+        <!-- Formulaire d'ajout d'un nouvel utilisateur -->
         <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+          
           <div class="form-group">
-            <label for="name">Nom</label>
-            <input type="text" id="name" [(ngModel)]="newUser.username" name="name" required minlength="1" maxlength="45" />
+            <label for="name">Nom :</label>
+            <input type="text" 
+            id="name" 
+            [(ngModel)]="newUser.username" 
+            name="name" 
+            required minlength="1" maxlength="23" 
+            #name="ngModel"
+            />
+            
+            <span class="error" *ngIf="name.invalid">
+              {{ name.errors?.['required'] ? 'Nom obligatoire.' : '' }}
+            </span>
           </div>
+
           <div class="form-group">
-            <label for="role">Role</label>
-            <input type="text" id="role" [(ngModel)]="newUser.role" name="role" required minlength="4" maxlength="6" />
+            <label for="role">Rôle :</label>
+            <select 
+            id="role" 
+            [(ngModel)]="newUser.role" 
+            name="role" 
+            required 
+            #role="ngModel"
+          >
+            <option value="" disabled selected>Choisissez un rôle</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+
+          <span class="error" *ngIf="role.invalid">
+            Le rôle est obligatoire.
+          </span>
+
           </div>
+
           <div class="form-group">
-            <label for="phone">Mot de passe</label>
-            <input type="text" id="phone" [(ngModel)]="newUser.password" name="phone" required minlength="3" maxlength="3"/>
+            <label for="password">Mot de passe :</label>
+            <input type="text" 
+            id="password" 
+            [(ngModel)]="newUser.password" 
+            name="password" 
+            required minlength="3" maxlength="3"
+            #password="ngModel"/>
+
+            <span class="error" *ngIf="password.invalid">
+              {{ password.errors?.['required'] ? 'Le mot de passe est obligatoire.' : '' }}
+              {{ password.errors?.['minlength'] ? 'Minimuù 3 caractères.' : '' }}
+            </span>
+
           </div>
          
          
       
-          <button type="submit" [disabled]="!clientForm.form.valid">Ajouter</button>
+          <button type="submit" [disabled]="!clientForm.form.valid">Valider</button>
         </form>
       </div>
   </div>
