@@ -35,7 +35,18 @@ export class HttpUtilisateursService {
             return this.httpUtilisateurs.post<any>('http://localhost:3000/api/users', utilisateur, { headers });
           }
  
+    // Méthode pour modifier un client directement dans son emplacement//
+    modifUser(id: string, user: any): Observable<any> {
+      const token = localStorage.getItem('token') || '';
     
+      const headers = { Authorization: token };
+    
+      return this.httpUtilisateurs.put<any>(`http://localhost:3000/api/users/${id}`, user, { headers });
+    }
+
+    // getUserById(id: string): Observable<any> {
+    //   return this.httpUtilisateurs.get<any>(`http://localhost:3000/api/users/${id}`);
+    // }
 
 
 }

@@ -75,30 +75,9 @@ header {
         font-size: medium;
        
     }
-}
-/* ------------------------- tableau utilisateur----------------------------------------------- */
+/* ----------------------------- barre de recherche------------------- */
 
-.container {
-   background-color: black;
-    margin-top: -42px;
-    background: linear-gradient(to bottom, #000000 0%, #4d4c4c 50%, #000000 100%);    
-  }
-
-   h2 {
-    color: #D6A553;
-    font-size: 50px;
-    font-style: italic;
-    text-align: center;
-  
-  
-  }
-
-  .error {
-    color: red;
-    font-weight: bold;
-  }
-
-/* Champ de recherche */
+    /* Champ de recherche */
 .container input {
   margin-bottom: 50px;
   margin-top: -10px;
@@ -125,156 +104,100 @@ header {
 .container input:focus {
   outline: none;
  
-  
- 
- 
 }
+}
+/* ------------------------- tableau utilisateur----------------------------------------------- */
 
+.clients-container {
+   background-color: black;
+    background: linear-gradient(to bottom, #000000 0%, #4d4c4c 50%, #000000 100%); 
+   
+  }
 
+  .error {
+    color: red;
+    font-weight: bold;
+  }
 
-
-  
-  .clients-container {
-    
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 40px;
-    justify-items: center;
-    padding-bottom: 50px;
-  } 
-
-  .clients-container input {
-    
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    justify-items: center;
-    padding-bottom: 50px;
-  } 
-  
-  .client-card {
-    width: 1000px; /* Définir la largeur de la carte */
-    height: 220px; /* Définir la hauteur de la carte */
+  .client-card-container {
+    width: 70%; /* Définir la largeur de la carte */
+    height: 280px; /* Définir la hauteur de la carte */
     border: 2px solid black;
     box-shadow: 0px -0px 25px 3px #2175fd;
     background-color: rgba(214, 165, 83);
-    border-radius: 30px;  
-  }
-  
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    
 
+  }
+
+  .client-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: -30px;
+  }
   .client-card h3 {
+    font-size: 2.5em;
     color: #2175fd;
-    font-size: 2.0rem;
-    text-align: center;
-    margin: 20px 0px;
-    padding-bottom: 10px;
+    font-weight: bold;
   }
 
-  .client-card input {
-    width: 100%;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: black;
-    background-color: rgba(214, 165, 83);
-    border: none;
-    border-radius: 5px;
+  .client-card p {
     padding: 5px;
-    outline: none;
+    padding-left: 10px;
+    font-size: 1.2em;
   }
 
-  .client-card input:focus {
-    outline: 2px solid #2175fd;
-  }
-
-  .btn-validate {
-    background-color: #2175fd;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-validate:hover {
-    background-color: #1b5dbf;
-  }
-  
   .client-details {
     display: flex;
-    padding: 10px;
-    margin-top: -35px;
-    text-align: end;
-  }
-  
-  .client-info,
-  .client-values {
-    display: flex;
-    flex-direction: column; /* Disposer les informations verticalement */
-    
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-  
-  .client-info p,
-  .client-values p {
-    margin: 3px 0px;
-  }
-  
-  .client-info strong {
-    font-weight: bold;
-    color: black;
-    margin-left: 20px;
-    
-  }
-  
-  .client-values  {
-    font-weight: bold;
-    color: black;
-    margin-left: 10px; 
-    text-align: start;
+    margin-top: -40px; 
   }
 
-  .icone {
-    display: flex;
-    gap: 60px;
-    position: absolute;
-    padding-left: 425px;
-    padding-top: 110px;
-  
-   
-    
-    
+  .client-info{
+    text-align: right;
     
   }
-  
-  .icone i {
+
+  .client-values p{
+    color: #2175fd;
+    background-color: white;
+    width: 110%;
+    
+  }
+
+
+.icone {
+    display: flex;
+    gap: 60px;
+    color: #2175fd;
     cursor: pointer;
     font-size: 30px;
     transition: transform 0.2s ease-in-out;
-    
-   
+    font-size: 35px;
   }
+  
+
 
   /* Texte affiché au survol de l'icône "Modifier" */
 .icone i.fa-pen-to-square:hover::after {
   content: "Modifier"; 
-  padding: 0px 10px;
-  font-size: 18px;
+  font-size: 1.3rem;
+  
+ 
   
 }
 
 .icone i.fa-trash-can:hover::after {
   content: "Supprimer"; 
-  padding: 0px 10px;
-  font-size: 18px;
+  font-size: 1.3rem;
+  
   
 }
   
-  .icone i:hover {
-    
+  .icone:hover {
     animation: shake 0.2s;
     }
 
@@ -291,9 +214,109 @@ header {
   90% { transform: translateX(-3px); }
   100% { transform: translateX(6px); }
 }
+    
+
+
+.edit-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-validate,
+.btn-cancel {
+  background-color: #2175fd;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-validate:hover,
+.btn-cancel:hover {
+  background-color: #1b5dbf;
+}
+
+  /* ------------------css ngForm de modifification----------- */
+
+ 
+  .edit-form{
+    display: flex;
+    flex-direction: column;
+    width: 1000px; /* Définir la largeur de la carte */
+    height: 220px; /* Définir la hauteur de la carte */
+    border: 2px solid black;
+    box-shadow: 0px -0px 25px 3px #2175fd;
+    background-color: rgba(214, 165, 83);
+    border-radius: 30px;  
+  }
+  
+  
+  .edit-form-fields{
+    color: #2175fd;
+    font-size: 2.0rem;
+    text-align: center;
+    margin: 10px 0px;
+    padding-bottom: 10px;
+  }
 
 
   
+  .edit-form-fields{
+   
+    
+   
+    
+    font-size: 1.2rem ;
+  }
+
+  label {
+    text-align: center;
+    font-size: x-large;
+    
+   
+  }
+
+  input.ng-pristine.ng-touched {
+    color: red;
+    background-color: white;
+    width: 50%;
+    font-size: 1.2rem;
+    
+  }
+
+  select{
+    padding: 5px;
+    width: 10%;
+  }
+  
+ 
+
+ 
+
+ 
+  
+
+  
+
+  
+
+  
+  .client-values,
+  .edit-form-fields  {
+    font-weight: bold;
+    color: black;
+    margin-left: 10px; 
+    text-align: start;
+  }
 
   
 

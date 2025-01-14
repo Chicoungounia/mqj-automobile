@@ -16,55 +16,53 @@
   </div>
 </header>
 
-<div class="container">
-<h2>Liste des Utilisateurs</h2>
-<!-- <div class="search-bar">
-  <input 
-    type="text" 
-    placeholder="Rechercher par nom de client" 
-    [(ngModel)]="searchQuery" 
-    (input)="filterClients()" 
-  /> 
-</div>-->
-
- <!-- Affichage des erreurs -->
-<div *ngIf="errorMessage" class="error">
-  <p>{{ errorMessage }}</p>
-</div>
-
-<!-- Affichage des clients dans des conteneurs individuels -->
 <div class="clients-container">
-  <div *ngFor="let utilisateur of user" class="client-card">
-    <h3>{{ utilisateur.username }}</h3>
-    
-    <div class="client-details">
-      <div class="client-info">
-        <p><strong>Id :</strong></p>
-        <p><strong>rôle :</strong></p>
-        <p><strong>Mot de passe :</strong></p>
-        
-      </div>
 
-      <div class="client-values">
-        <p>{{ utilisateur.id }}</p>
-        <p>{{ utilisateur.role }}</p>
-        <p>{{ utilisateur.password }}</p>
+  <div *ngFor="let utilisateur of user" class="client-card-container">
+    <!-- Affichage des informations ou mode édition -->
+    <ng-container *ngIf="!editMode[utilisateur.id]; else editForm">
+      <div class="client-card">
+        <h3>{{ utilisateur.username }}</h3>
+        <div class="client-details">
+          <div class="client-info">
+            <p><strong>Id :</strong></p>
+            <p><strong>Rôle :</strong></p>
+            <p><strong>Mot de passe :</strong></p>
+          </div>
+          <div class="client-values">
+            <p>{{ utilisateur.id }}</p>
+            <p>{{ utilisateur.role }}</p>
+            <p>{{ utilisateur.password }}</p>
+          </div>
+        </div>
+        <div class="icone">
+          <i class="fa-solid fa-pen-to-square" (click)="enableEdit(utilisateur.id)"></i>
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
       </div>
-    
-
-    <div class="icone">
-      <i class="fa-solid fa-pen-to-square" style="color: #2175fd" ></i>
-      <i class="fa-regular fa-trash-can" style="color: #2175fd" ></i>
-    </div>
+    </ng-container>
+  
+    <!-- Formulaire d'édition -->
+    <ng-template #editForm>
+      <div class="edit-form">
+        <div class="edit-form-fields">
+          <label>Nom d'utilisateur</label>
+          <input [(ngModel)]="utilisateur.username" />
+          <label>Rôle</label>
+          <select [(ngModel)]="utilisateur.role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+          <label>Mot de passe</label>
+          <input [(ngModel)]="utilisateur.password" type="password" />
+        </div>
+        <div class="edit-buttons">
+          <button class="btn-validate" (click)="saveChanges(utilisateur.id, utilisateur)">Valider</button>
+          <button class="btn-cancel" (click)="disableEdit(utilisateur.id)">Annuler</button>
+        </div>
+      </div>
+    </ng-template>
   </div>
+  
 </div>
-
-
-<!-- Affichage du message lorsqu'il n'y a pas de clients -->
-<!-- <div *ngIf="filteredClients.length === 0"> -->
-  <!-- <p>Aucun client trouvé.</p> -->
-</div>
-</div>
-
-
 <app-footer></app-footer>
