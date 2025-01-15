@@ -89,8 +89,6 @@ header {
     font-size: 50px;
     font-style: italic;
     text-align: center;
-  
-  
   }
 
   .error {
@@ -99,21 +97,26 @@ header {
   }
 
 /* Champ de recherche */
+
+
 .container input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   margin-bottom: 50px;
-  margin-top: -10px;
-  margin-left: 550px;
   width: 25%; 
   padding: 10px;
   font-size: 25px; 
   font-weight: bold;
   text-align: center;
   box-shadow: 0px -0px 25px 3px #2175fd;
-  color: black; /* Texte bleu */
+  color: black; 
   background-color: rgba(214, 165, 83); 
   border: 2px solid black; 
   border-radius: 10px;
-  box-shadow: 0px -0px 25px 3px #2175fd;
+ 
 }
 
 /* Style du placeholder */
@@ -124,10 +127,6 @@ header {
 
 .container input:focus {
   outline: none;
- 
-  
- 
- 
 }
 
 
@@ -153,6 +152,7 @@ header {
   } 
   
   .client-card {
+  
     width: 600px; /* Définir la largeur de la carte */
     height: 250px; /* Définir la hauteur de la carte */
     border: 2px solid black;
@@ -207,6 +207,7 @@ header {
   
   .client-details {
     display: flex;
+    justify-content: center;
     padding: 10px;
     margin-top: -35px;
     text-align: end;
@@ -228,15 +229,15 @@ header {
   
   .client-info strong {
     font-weight: bold;
-    color: black;
-    margin-left: 20px;
+    color: #2175fd;
+   
     
   }
   
   .client-values  {
     font-weight: bold;
     color: black;
-    margin-left: 10px; 
+    margin-left: 8px; 
     text-align: start;
   }
 

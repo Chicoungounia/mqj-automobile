@@ -16,6 +16,8 @@ export class UtilisateursComponent implements OnInit {
   user: any[] = [];
   errorMessage: string = ''
   editMode: { [ key : string]: boolean} = {}
+  filteredUser: any[] = []; // Liste filtrée pour l'affichage
+  searchQuery: string = ''; // Requête de recherche
 
   constructor(private httpUser: HttpUtilisateursService) { }
 
@@ -46,6 +48,16 @@ export class UtilisateursComponent implements OnInit {
   },
 
 });
+} 
+
+ /**
+   * Filtre les clients selon la requête de recherche.
+   */
+ filterUser(): void {
+  const query = this.searchQuery.toLowerCase();
+  this.filteredUser = this.user.filter((utilisateur) =>
+    utilisateur.username.toLowerCase().includes(query)
+  );
 }
 
 // Méthode pour activer et desactiver le mode édition pour un utilisateur (3)
