@@ -3,7 +3,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { HttpUtilisateursService } from './http-utilisateurs.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-utilisateurs',
@@ -15,11 +15,12 @@ export class UtilisateursComponent implements OnInit {
 
   user: any[] = [];
   errorMessage: string = ''
+  error: string = ''
   editMode: { [ key : string]: boolean} = {}
   filteredUser: any[] = []; // Liste filtrée pour l'affichage
   searchQuery: string = ''; // Requête de recherche
 
-  constructor(private httpUser: HttpUtilisateursService) { }
+  constructor(private httpUser: HttpUtilisateursService, private route: Router) { }
 
   ngOnInit(): void {
     // Authentification avec les informations de l'utilisateur
@@ -35,30 +36,32 @@ export class UtilisateursComponent implements OnInit {
     this.httpUser.getUser().subscribe({
       next: (userData) => {
       this.user = userData;  // Stockage des données users de l'api
+      this.filteredUser = [...this.user]; // Initialiser la liste filtrée avec tous les utilisateurs
       console.table(userData);  
       },
 
-      error: (error) => {
+       error: (error: any) => {
       this.errorMessage = 'Erreur lors du chargement des données des utilisateurs: ' + error.message;
       }
    });
   },
-      error: (error) => {
+       error: (error: any) => {
       this.errorMessage = 'Erreur de connexion: ' + error.message;
   },
 
 });
+
 } 
 
- /**
-   * Filtre les clients selon la requête de recherche.
-   */
- filterUser(): void {
-  const query = this.searchQuery.toLowerCase();
-  this.filteredUser = this.user.filter((utilisateur) =>
-    utilisateur.username.toLowerCase().includes(query)
-  );
-}
+//  /**
+//    * Filtre les clients selon la requête de recherche. (4)
+//    */
+//  filterUser(): void {
+//   const query = this.searchQuery.toLowerCase().trim();
+//   this.filteredUser = this.user.filter((utilisateur) => 
+//     utilisateur.username.toLowerCase().includes(query)
+//   );
+// }
 
 // Méthode pour activer et desactiver le mode édition pour un utilisateur (3)
   enableEdit(userId: string): void {
@@ -67,7 +70,26 @@ export class UtilisateursComponent implements OnInit {
 
   disableEdit(userId: string): void {
     this.editMode[userId] = false;
+  };
+
+  //  Supprime un utilisateur.
+ deleteUser(userId: string): void {
+   this.httpUser.deleteUser(userId).subscribe({
+     next: () => {
+       this.user = this.user.filter((user) => user.id !== userId);
+        this.user = this.user.map((user, index) => ({
+         ...user,
+         id: index + 1, // Recalcule l'ID en fonction de la position
+       }));
+       this.filteredUser = [...this.user]; // Mise à jour de la liste filtrée
+       alert('Client supprimé avec succès.');
+     },
+     error: (error: any) => {
+       alert(`Erreur lors de la suppression de l'utilisateur : ${error.message}`);
+     },
+    });
   }
+  
 
   // Méthode pour enregistrer les modifications (3)
 saveChanges(userId: string, updatedUser: any): void {
@@ -87,5 +109,6 @@ saveChanges(userId: string, updatedUser: any): void {
       this.errorMessage = 'Erreur lors de la mise à jour : ' + err.message;
     }
   });
+ 
 }
 }

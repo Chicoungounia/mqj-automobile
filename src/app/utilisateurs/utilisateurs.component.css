@@ -116,13 +116,14 @@ header {
     text-align: center;
   }
 
-.clients-container input {
+.search-bar input.ng-valid.ng-dirty.ng-touched {
+
   display: flex;
   flex-direction: column;
   margin-top: -40px;
   margin-bottom: 25px;
-  width: 100%; 
-  padding: 10px;
+  width: 120%; 
+  padding: 5px;
   font-size: 25px; 
   font-weight: bold;
   text-align: center;
@@ -131,16 +132,33 @@ header {
   background-color: rgba(214, 165, 83); 
   border: 2px solid black; 
   border-radius: 10px;
-  
+}
+
+.search-bar input.ng-untouched.ng-pristine.ng-valid{
+
+  display: flex;
+  flex-direction: column;
+  margin-top: -40px;
+  margin-bottom: 25px;
+  width: 120%; 
+  padding: 5px;
+  font-size: 25px; 
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px -0px 25px 3px #2175fd;
+  color: black; 
+  background-color: rgba(214, 165, 83); 
+  border: 2px solid black; 
+  border-radius: 10px;
 }
 
 /* Style du placeholder */
-.container input::placeholder {
-  color: #000005; /* Texte bleu */
+input.ng-valid.ng-dirty.ng-touched::placeholder {
+  color: #030363; /* Texte bleu */
   opacity: 0.5; /* Transparence */
 }
 
-.container input:focus {
+.clients-container input:focus {
   outline: none;
 }
 
@@ -304,8 +322,6 @@ h2 {
     box-shadow: 0px -0px 25px 3px #2175fd;
     background-color: rgba(214, 165, 83);
     border-radius: 30px;
-    
-    
     display: flex;
     flex-direction: column;
     width: 1000px;
@@ -314,9 +330,6 @@ h2 {
     position: relative;
     left: -10px;
     top: -10px;
-    
-    
-
   }
   
   
@@ -367,6 +380,7 @@ h2 {
     color: black;
     text-align: center;
     font-size: 1.1em;
+    font-weight: bold;
     border-radius: 7px;
     margin-bottom: 5px;
   }
