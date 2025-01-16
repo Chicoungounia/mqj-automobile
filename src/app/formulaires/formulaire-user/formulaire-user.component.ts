@@ -32,8 +32,8 @@ export class FormulaireUserComponent {
         this.router.navigate(['/utilisateurs']); // Redirige vers la page des clients après l'ajout
       },
       error: (error) => {
-        console.error('Erreur lors de l\'ajout du client:', error);
-        alert(`! L'opération a échouée et le client n'a pas été ajouté !`);
+        console.error('Erreur lors de l\'ajout de l\'utilisateur:', error);
+        alert(`! L'opération a échouée et l'utilisateur n'a pas été ajouté !`);
         
 
       }

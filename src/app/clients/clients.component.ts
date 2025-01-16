@@ -373,38 +373,53 @@ export class ClientsComponent implements OnInit {
     this.router.navigate([`/modification-client/${clientId}`]);
   }
 
-  /**
-   * Confirme et supprime un client.
-   */
-  confirmDelete(clientId: string): void {
-    const confirmation = window.confirm(
-      'Êtes-vous sûr de vouloir supprimer ce client ? Cette action est irréversible.'
-    );
+/**
+ * Confirme et supprime un client.
+ */
+confirmDelete(clientId: string): void {
+  // Trouver le client à supprimer
+  const clientToDelete = this.clients.find((client) => client.id === clientId);
 
-    if (confirmation) {
-      this.deleteClient(clientId);
-    }
+  if (!clientToDelete) {
+    alert('Client introuvable.');
+    return;
   }
 
-  /**
-   * Supprime un client donné.
-   */
-  deleteClient(clientId: string): void {
-    this.clientService.deleteClient(clientId).subscribe({
-      next: () => {
-        this.clients = this.clients.filter((client) => client.id !== clientId);
-         this.clients = this.clients.map((client, index) => ({
-          ...client,
-          id: index + 1, // Recalcule l'ID en fonction de la position
-        }));
-        this.filteredClients = [...this.clients]; // Mise à jour de la liste filtrée
-        alert('Client supprimé avec succès.');
-      },
-      error: (error) => {
-        alert(`Erreur lors de la suppression du client : ${error.message}`);
-      },
-    });
+  const confirmation = window.confirm(
+    `Êtes-vous sûr de vouloir supprimer le client "${clientToDelete.name}" ?`
+  );
+
+  if (confirmation) {
+    this.deleteClient(clientId, clientToDelete.name);
   }
+}
+
+/**
+ * Supprime un client donné.
+ */
+deleteClient(clientId: string, clientName: string): void {
+  this.clientService.deleteClient(clientId).subscribe({
+    next: () => {
+      // Supprimer le client de la liste locale
+      this.clients = this.clients.filter((client) => client.id !== clientId);
+
+      // Recalculer les IDs
+      this.clients = this.clients.map((client, index) => ({
+        ...client,
+        id: index + 1, // Recalcule l'ID
+      }));
+
+      this.filteredClients = [...this.clients]; // Mise à jour de la liste filtrée
+
+      console.log(`Client "${clientName}" a été supprimé avec succès.`);
+      alert(`Le client "${clientName}" a été supprimé avec succès.`);
+    },
+    error: (error) => {
+      alert(`Erreur lors de la suppression du client : ${error.message}`);
+    },
+  });
+}
+
 
   
 
