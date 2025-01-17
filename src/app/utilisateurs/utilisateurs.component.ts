@@ -25,36 +25,22 @@ export class UtilisateursComponent implements OnInit {
   constructor(private httpUser: HttpUtilisateursService, private route: Router) { }
 
   ngOnInit(): void {
-    // Authentification avec les informations de l'utilisateur
-    let authBody = {"username": "admin", "password": "pwd"}
 
-    // Connexion et récupération du token
-    this.httpUser.login(authBody).subscribe ({
-      next: (value) => {
-        console.log(value);
-        localStorage.setItem('token', value.token);  // Sauvegarde du token
-      
-    //  Récupération des clients après authentification
-    this.httpUser.getUser().subscribe({
-      next: (userData) => {
-      this.user = userData;  // Stockage des données users de l'api
-      this.filteredUser = [...this.user]; // Initialiser la liste filtrée avec tous les utilisateurs
-      console.table(userData);  
-      },
-      
-    
+          
+          //  Récupération des clients après authentification
+          this.httpUser.getUser().subscribe({
+            next: (userData) => {
+            this.user = userData;  // Stockage des données users de l'api
+            this.filteredUser = [...this.user]; // Initialiser la liste filtrée avec tous les utilisateurs
+            console.table(userData);  
+            },
+            
+          
 
-       error: (error: any) => {
-      this.errorMessage = 'Erreur lors du chargement des données des utilisateurs: ' + error.message;
-      }
-   });
-  },
-       error: (error: any) => {
-      this.errorMessage = 'Erreur de connexion: ' + error.message;
-  },
-
-});
-
+            error: (error: any) => {
+            this.errorMessage = 'Erreur lors du chargement des données des utilisateurs: ' + error.message;
+            }
+          });
 } 
 
 //  /**
@@ -125,7 +111,7 @@ export class UtilisateursComponent implements OnInit {
 saveChanges(userId: string, updatedUser: any): void {
   this.httpUser.modifUser(userId, updatedUser).subscribe({
     next: (response) => {
-      console.log('Utilisateur mis à jour avec succès', response);
+      console.log(`Utilisateur ${response.username} a bien étémis à jour avec succès`, response);
       
 
       // Trouver l'utilisateur à partir de l'ID

@@ -16,18 +16,18 @@ export class ProduitsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let authBody = {"username": "admin", "password": "pwd"}
+  //   let authBody = {"username": "admin", "password": "pwd"}
 
-    this.produitsService.login(authBody).subscribe((value) => {
-      console.log(value);
-      localStorage.setItem('token', value.token);
+  //   this.produitsService.login(authBody).subscribe((value) => {
+  //     console.log(value);
+  //     localStorage.setItem('token', value.token);
     
-    this.produitsService.getProducts().subscribe(value => {
-        console.log(value); 
-      },
+  //   this.produitsService.getProducts().subscribe(value => {
+  //       console.log(value); 
+  //     },
     
-    );
-  });
+  //   );
+  // });
   }
 }
 

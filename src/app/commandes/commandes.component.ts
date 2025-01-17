@@ -16,18 +16,14 @@ export class CommandesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let authBody = {"username": "admin", "password": "pwd"}
-
-    this.commandesService.login(authBody).subscribe((value) => {
-      console.log(value);
-      localStorage.setItem('token', value.token);
+  
     
     this.commandesService.getCommandes().subscribe(value => {
         console.table(value); 
       },
     
     );
-  });
+  
   }
 }
 

@@ -26,7 +26,7 @@ export class FormulaireUserComponent {
   onSubmit() {
     this.httpUser.addUser(this.newUser).subscribe({
       next: (response) => {
-        console.log('Client ajouté:', response);
+        console.log(`Utilisateur ${response.username} ajouté:`, response);
         alert(`L'utilisateur "${response.username}" a été ajouté avec succès !`);
         this.newUser = response
         this.router.navigate(['/utilisateurs']); // Redirige vers la page des clients après l'ajout

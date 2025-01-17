@@ -310,34 +310,18 @@ export class ClientsComponent implements OnInit {
   errorMessage: string = ''; // Gestion des messages d'erreur
   searchQuery: string = ''; // Requête de recherche
   editMode: { [key: string]: boolean } = {}; // Suivi des modes édition par client
+  
 
   constructor(private clientService: HttpClientsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authenticateAndLoadClients();
-  }
-
-  /**
-   * Authentifie l'utilisateur et charge les clients.
-   */
-  private authenticateAndLoadClients(): void {
-    const authBody = { username: 'admin', password: 'pwd' };
-
-    this.clientService.login(authBody).subscribe({
-      next: (response) => {
-        localStorage.setItem('token', response.token);
-        this.loadClients();
-      },
-      error: (error) => {
-        this.errorMessage = `Erreur de connexion : ${error.message}`;
-      },
-    });
-  }
+    
+  
 
   /**
    * Charge les clients après authentification.
    */
-  private loadClients(): void {
+  
     this.clientService.getClients().subscribe({
       next: (clientsData) => {
         this.clients = clientsData;

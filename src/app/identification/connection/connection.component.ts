@@ -6,30 +6,25 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-root',
   imports: [FooterComponent, CommonModule, RouterModule, FormsModule],
   templateUrl: './connection.component.html',
   styleUrl: './connection.component.css'
 })
+
+
 export class ConnectionComponent implements OnInit{
 
   authData = { username: '', password: '' };
   errorMessage: string = '';
+ 
 
   constructor(private httpLoginService: HttpLoginService, private router: Router) { }
   
   ngOnInit() {
-    let authBody = {"username": "admin", "password": "pwd"}
-
-    this.httpLoginService.login(authBody).subscribe((value) => {
-      console.log(value);
-      localStorage.setItem('token', value.token);
-
-      this.httpLoginService.getUser().subscribe(value => {
-        console.log(value);
-      })
-    });
+   
 
   }
 
