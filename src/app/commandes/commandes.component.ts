@@ -17,53 +17,26 @@ export class CommandesComponent implements OnInit {
   isEdit = false; // Mode édition ou création
   errorMessage: string = ''; // Gestion des messages d'erreur
   orderForm: any = { productId: null, quantity: null, clientId: null }; // Modèle de formulaire
-order: any;
+  order: any;
   
 
   constructor(private orderService: HttpCommandesService) { }
 
   ngOnInit(): void {
-    this.authenticateAndLoadClients();
-  }
-
-  /**
-   * Authentifie l'utilisateur et charge les commande.
-   */
-  private authenticateAndLoadClients(): void {
-    const authBody = { username: 'admin', password: 'pwd' };
-
-    this.orderService.login(authBody).subscribe({
-      next: (response) => {
-        localStorage.setItem('token', response.token);
-        this.loadOrders();
-      },
-      error: (error) => {
-        this.errorMessage = `Erreur de connexion : ${error.message}`;
-      },
-    });
-  }
-
-  loadOrders(): void {
-    this.orderService.getOrders().subscribe(
-      (data) => {
+    
+    this.orderService.getOrders().subscribe({
+      next: (data) => {
         this.orders = data;
+        this.orders = [...this.orders]
+        console.table(data)
       },
-      (error) => {
+
+      error: (error : any) => {
         console.error('Erreur lors de la récupération des commandes :', error);
       }
-    );
+  });
   }
-  
-  // loadOrders(): void {
-  //   this.orderService.getOrders().subscribe(
-  //     (data) => {
-  //       this.orders = data;
-  //     },
-  //     (error) => {
-  //       console.error('Erreur lors de la récupération des commandes :', error);
-  //     }
-  //   );
-  // }
+
 
   // Afficher le formulaire pour une nouvelle commande
   showForm(): void {
@@ -83,24 +56,39 @@ order: any;
   submitForm(): void {
     if (this.isEdit) {
       this.orderService.updateOrder(this.orderForm.id, this.orderForm).subscribe(() => {
-        this.loadOrders();
+        
         this.isFormVisible = false;
       });
     } else {
       this.orderService.createOrder(this.orderForm).subscribe(() => {
-        this.loadOrders();
+        
         this.isFormVisible = false;
       });
     }
   }
 
   // Supprimer une commande
-  deleteOrder(id: number): void {
-    this.orderService.deleteOrder(id).subscribe(() => {
-      this.loadOrders();
+  deleteOrder(orderId: string): void {
+    const orderToDelete = this.orders.find(order => order.id === orderId);
+  
+    if (!orderToDelete) {
+      alert("Commande introuvable");
+      return;
+    }
+  
+    // Appel au service pour supprimer la commande du backend
+    this.orderService.deleteOrder(+orderId).subscribe({
+      next: () => {
+        // Suppression de la commande de la liste localement
+        this.orders = this.orders.filter(order => order.id !== orderId);
+        console.log('Commande supprimée avec succès');
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la suppression de la commande :', error);
+      }
     });
   }
-
+  
   // Annuler l’action (revenir à la liste)
   cancelForm(): void {
     this.isFormVisible = false;

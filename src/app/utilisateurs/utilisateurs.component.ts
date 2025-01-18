@@ -22,7 +22,7 @@ export class UtilisateursComponent implements OnInit {
   currentUserName: string = '';  // Ajout d'une variable pour stocker le nom de l'utilisateur connecté.
   
 
-  constructor(private httpUser: HttpUtilisateursService, private route: Router) { }
+  constructor(private httpUser: HttpUtilisateursService, private router: Router) { }
 
   ngOnInit(): void {
 

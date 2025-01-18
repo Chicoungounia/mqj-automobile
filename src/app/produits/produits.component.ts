@@ -15,34 +15,29 @@ export class ProduitsComponent implements OnInit {
   selectedProduct: any = {};  // Produit sélectionné pour la modification
   newProduct: any = { name: '', stock: 0 };  // Nouveau produit à ajouter
   isEditMode: boolean = false;  // Mode édition pour un produit
+  err: string =""
 
   constructor(private produitsService: HttpProduitsService) {}
 
   ngOnInit(): void {
-    const authBody = { username: 'admin', password: 'pwd' };  // Corps de l'authentification
 
-    // Tentative de connexion avec le service d'authentification
-    this.produitsService.login(authBody).subscribe({
-      next: (value) => {
-        console.log('Token reçu:', value.token);
-        localStorage.setItem('token', value.token);  // Stocke le token pour les futures requêtes
+  
+    
 
         // Récupérer les produits après l'authentification réussie
         this.produitsService.getProducts().subscribe({
           next: (data) => {
-            console.log('Produits récupérés:', data);
             this.produits = data;  // Mise à jour de la liste des produits
+            this.produits = [...this.produits];
+            console.table(data)
           },
-          error: (err) => {
+
+          error: (err: any) => {
             console.error('Erreur de récupération des produits:', err);
-          },
+          }
         });
-      },
-      error: (err) => {
-        console.error('Erreur authentification:', err);  // En cas d'erreur d'authentification
-      },
-    });
   }
+    
 
   // Fonction pour activer le mode édition d'un produit
   editProduct(produit: any): void {
