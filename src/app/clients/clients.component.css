@@ -7,6 +7,10 @@ header {
     background-color: #000000;
 }
 
+.error-image {
+  width: 20%;
+}
+
 .logo img {
     height: 100px;
     cursor: pointer;
@@ -94,6 +98,7 @@ header {
   .error {
     color: red;
     font-weight: bold;
+    text-align: center;
   }
 
 /* Champ de recherche */

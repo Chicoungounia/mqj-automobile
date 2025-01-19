@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../footer/footer.component';
 import { HttpCommandesService } from './http-commandes.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-commandes',
@@ -17,10 +18,13 @@ export class CommandesComponent implements OnInit {
   isEdit = false; // Mode édition ou création
   errorMessage: string = ''; // Gestion des messages d'erreur
   orderForm: any = { productId: null, quantity: null, clientId: null }; // Modèle de formulaire
-  order: any;
+  customers: any[] = [];
+  victor: string = 'Veuillez appelez l\'admin Victor Garcia';
+
+  
   
 
-  constructor(private orderService: HttpCommandesService) { }
+  constructor(private orderService: HttpCommandesService, private http:HttpClient) { }
 
   ngOnInit(): void {
     
@@ -33,6 +37,7 @@ export class CommandesComponent implements OnInit {
 
       error: (error : any) => {
         console.error('Erreur lors de la récupération des commandes :', error);
+        this.errorMessage = `Erreur lors de la récupération des commandes...${this.victor}`
       }
   });
   }

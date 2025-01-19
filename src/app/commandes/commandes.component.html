@@ -11,9 +11,7 @@
     </ul>
   </nav>
 
-  <div class="connexion">
-    <button>Connexion</button>
-  </div>
+  
 </header>
 
 <div class="container">
@@ -22,6 +20,12 @@
 
     <div *ngIf="!isFormVisible">
       <h2>Liste des commandes</h2>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+        <img src="victorGarcia.jpg" alt="Erreur" class="error-image" />
+      </div>
+
       <button (click)="showForm()" class="test">Nouvelle commande</button>
       <div *ngFor="let order of orders" class="commande-card">
         <div class="commande-info">
@@ -47,7 +51,7 @@
 
       <div class="form-group">
         <label>Quantité : </label>
-        <input type="number" [(ngModel)]="orderForm.quantity" name="quantity" required />
+        <input type="number" [(ngModel)]="orderForm.quantity" name="quantity" required min="1" />
       </div>
 
       <button type="submit">{{ isEdit ? 'Modifier' : 'Créer' }}</button>

@@ -19,7 +19,7 @@ header {
 }
 
 .nav a {
-    color: rgb(140, 3, 231);
+    color: #D6A553;
     text-decoration: none;
     font-size: 30px;
 }
@@ -86,7 +86,15 @@ header {
     padding-top: 20px;
     color: lightyellow;
     justify-content: center; /* Permet de centrer le contenu à l'intérieur du conteneur */
-    
+    position: relative;
+}
+
+.connection-message {
+    position: absolute;
+    top: -53px;
+    right: -105px;
+    white-space: nowrap;
+    color: yellowgreen;
 
 }
 

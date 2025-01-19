@@ -20,6 +20,8 @@ export class UtilisateursComponent implements OnInit {
   filteredUser: any[] = []; // Liste filtrée pour l'affichage
   searchQuery: string = ''; // Requête de recherche
   currentUserName: string = '';  // Ajout d'une variable pour stocker le nom de l'utilisateur connecté.
+  victor: string = 'Veuillez appelez l\'admin Victor Garcia';
+
   
 
   constructor(private httpUser: HttpUtilisateursService, private router: Router) { }
@@ -38,20 +40,13 @@ export class UtilisateursComponent implements OnInit {
           
 
             error: (error: any) => {
-            this.errorMessage = 'Erreur lors du chargement des données des utilisateurs: ' + error.message;
+            this.errorMessage = `Erreur lors du chargement des données des utilisateurs...${this.victor}`;
+            console.error('Erreur lors du chargement des données des utilisateurs: ', error)
             }
           });
 } 
 
-//  /**
-//    * Filtre les clients selon la requête de recherche. (4)
-//    */
-//  filterUser(): void {
-//   const query = this.searchQuery.toLowerCase().trim();
-//   this.filteredUser = this.user.filter((utilisateur) => 
-//     utilisateur.username.toLowerCase().includes(query)
-//   );
-// }
+
 
 // Méthode pour activer et desactiver le mode édition pour un utilisateur (3)
   enableEdit(userId: string): void {

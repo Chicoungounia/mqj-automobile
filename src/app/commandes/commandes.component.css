@@ -1,48 +1,53 @@
 header {
     display: flex;
-    justify-content: space-between;
+    justify-items: center;
     align-items: center;
-    padding: 5px 60px;
     background-color: #000000;
 }
 
+.error-image {
+    width: 50%;
+    margin-bottom: 20px;
+    margin-right: 10px;
+   
+  }
+
 .logo img {
+    padding: 5px 60px;
     height: 100px;
     cursor: pointer;
+}
+
+.nav {
+    flex-grow: 0.65 ;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .nav ul {
     list-style: none;
     display: flex;
     gap: 80px;
-    margin-left: -50px;
+
+   
+    
 }
 
 .nav a {
     color: #D6A553;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
     font-size: 30px;
+   
 }
 
 .nav a:hover {
     text-decoration: underline;
 }
 
-.connexion button {
-    padding: 8px 16px;
-    background-color: #D6A553;
-    font-size: 18px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-}
 
-.connexion button:hover {
-    background-color: #355C7D;
-    color: white;
-}
 
 .container {
     background-color: black;
@@ -273,3 +278,4 @@ input[type="email"]:focus {
         height: auto;
     }
 }
+

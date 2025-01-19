@@ -10,12 +10,18 @@
     
 
     <div class="status">
-        <p>Déconnecté</p>
+      <p *ngIf="username">Connecté en tant que : <strong>{{ username }}</strong></p>
+      <p *ngIf="!username">Déconnecté</p>
     </div>
     
   </header>
 
   <div id="identification">
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+
+    </div>
     
     <div id="utilisateur">
       <h2>Identification</h2>

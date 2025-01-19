@@ -1,8 +1,8 @@
 <header>
   <div class="logo">
-    <a routerLink="/accueil" alt="Logo">
-      <img src="mqj.png" alt="Logo">
+    <a href="/accueil" alt="Logo"><img src="mqj.png">
     </a>
+      
   </div>
   <nav class="nav">
     <ul>
@@ -16,6 +16,13 @@
 <main>
   <section class="produits-container">
     <h1>Liste des Produits</h1>
+
+    <div *ngIf="err" class="error-message">
+      <p>{{ err }}</p>
+      <img src="victorGarcia.jpg" alt="Erreur" class="error-image" />
+
+    </div>
+
     <ul>
       <li *ngFor="let produit of produits">
         <article class="produit-item">
@@ -46,7 +53,7 @@
         <div class="form-group">
           <label for="stock">Stock</label>
           <input id="stock" type="number" [(ngModel)]="selectedProduct.stock" name="stock" required
-            class="form-control" />
+            class="form-control"  min="0" />
         </div>
         <button type="submit" class="btn btn-success">Enregistrer</button>
         <button type="button" (click)="cancelEdit()" class="btn btn-secondary">

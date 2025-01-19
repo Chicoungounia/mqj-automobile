@@ -310,6 +310,7 @@ export class ClientsComponent implements OnInit {
   errorMessage: string = ''; // Gestion des messages d'erreur
   searchQuery: string = ''; // Requête de recherche
   editMode: { [key: string]: boolean } = {}; // Suivi des modes édition par client
+  victor: string = 'Veuillez appelez l\'admin Victor Garcia';
   
 
   constructor(private clientService: HttpClientsService, private router: Router) {}
@@ -328,7 +329,9 @@ export class ClientsComponent implements OnInit {
         this.filteredClients = [...clientsData]; // Initialisation de la liste filtrée
       },
       error: (error) => {
-        this.errorMessage = `Erreur lors du chargement des clients : ${error.message}`;
+        this.errorMessage = `Erreur lors du chargement des clients... ${this.victor} `;
+        console.error(`Erreur lors du chargement des clients :`,error);
+        
       },
     });
   }

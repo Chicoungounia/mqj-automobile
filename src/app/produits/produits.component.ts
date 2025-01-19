@@ -16,6 +16,7 @@ export class ProduitsComponent implements OnInit {
   newProduct: any = { name: '', stock: 0 };  // Nouveau produit à ajouter
   isEditMode: boolean = false;  // Mode édition pour un produit
   err: string =""
+  victor: string = 'Veuillez appelez l\'admin Victor Garcia';
 
   constructor(private produitsService: HttpProduitsService) {}
 
@@ -33,6 +34,7 @@ export class ProduitsComponent implements OnInit {
           },
 
           error: (err: any) => {
+            this.err = `Erreur de récupération des produits... ${this.victor}`
             console.error('Erreur de récupération des produits:', err);
           }
         });
@@ -85,7 +87,7 @@ export class ProduitsComponent implements OnInit {
 
   // Fonction pour ajouter un nouveau produit
   addProduct(): void {
-    if (this.newProduct.name && this.newProduct.stock >= 0) {
+    if (this.newProduct.name && this.newProduct.stock >= 1) {
       this.produitsService.addProduct(this.newProduct).subscribe({
         next: (addedProduct) => {
           console.log('Nouveau produit ajouté:', addedProduct);

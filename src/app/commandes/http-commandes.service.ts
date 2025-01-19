@@ -36,6 +36,8 @@ export class HttpCommandesService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `${token}`);
     return this.httpCommande.post<any>(this.baseUrl, order, { headers });
+
+    
   }
 
   // Modifier une commande existante
