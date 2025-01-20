@@ -24,13 +24,14 @@ export class AccueilComponent {
   // Action pour gérer connexion/déconnexion
   handleAuthAction() {
     if (this.isLoggedIn) {
+      console.log(this.username,` Vous êtes déconnecté`);
       // Déconnexion
       localStorage.removeItem('token'); // Supprime le token
       localStorage.removeItem('username'); // Supprime le nom d'utilisateur
       this.isLoggedIn = false;
       this.username = ''; // Réinitialiser le nom d'utilisateur
       this.router.navigate(['/accueil']); // Redirige vers la page d'accueil
-      console.log('Vous êtes déconnecté');
+      
     } else {
       // Connexion
       this.router.navigate(['/connection']); // Redirige vers la page de connexion

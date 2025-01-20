@@ -311,6 +311,8 @@ export class ClientsComponent implements OnInit {
   searchQuery: string = ''; // Requête de recherche
   editMode: { [key: string]: boolean } = {}; // Suivi des modes édition par client
   victor: string = 'Veuillez appelez l\'admin Victor Garcia';
+  username: string = ''; // Variable pour stocker le nom d'utilisateur connecté
+
   
 
   constructor(private clientService: HttpClientsService, private router: Router) {}

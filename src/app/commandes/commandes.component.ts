@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../footer/footer.component';
 import { HttpCommandesService } from './http-commandes.service';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-commandes',
@@ -24,7 +25,7 @@ export class CommandesComponent implements OnInit {
   
   
 
-  constructor(private orderService: HttpCommandesService, private http:HttpClient) { }
+  constructor(private orderService: HttpCommandesService, private http: HttpClient) { }
 
   ngOnInit(): void {
     

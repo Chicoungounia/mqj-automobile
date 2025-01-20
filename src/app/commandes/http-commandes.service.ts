@@ -42,7 +42,7 @@ export class HttpCommandesService {
 
   // Modifier une commande existante
   updateOrder(id: number, order: { productId: number; quantity: number; clientId: number }): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().set('Authorization', `${token}`);
     return this.httpCommande.put<any>(`${this.baseUrl}/${id}`, order, { headers });
   }

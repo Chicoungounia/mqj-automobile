@@ -21,7 +21,7 @@
   
   <div class="background"> 
     <div class="container">
-        <h2>Nouvel Utilisateur</h2>
+        <h2>Nouveau Utilisateur</h2>
       
         <!-- Formulaire d'ajout d'un nouvel utilisateur -->
         <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
@@ -63,7 +63,7 @@
 
           <div class="form-group">
             <label for="password">Mot de passe :</label>
-            <input type="text" 
+            <input type="password" 
             id="password" 
             [(ngModel)]="newUser.password" 
             name="password" 
